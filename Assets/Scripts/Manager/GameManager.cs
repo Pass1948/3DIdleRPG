@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using System.Resources;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder(-100)]       // GameManager가 다른 Script보다 먼저 호출되게 설정
 public class GameManager : MonoBehaviour
@@ -23,12 +25,11 @@ public class GameManager : MonoBehaviour
     private static EventManager eventManager;
     public static EventManager Event => eventManager;
 
-    private static ScoreManager scoreManager;
-    public static ScoreManager Score => scoreManager;
-
     private static SoundManager soundManager;
     public static SoundManager Sound=> soundManager;
 
+    private static CharacterManager characterManager;
+    public static CharacterManager Character => characterManager;
 
     private void Awake()
     {
@@ -46,33 +47,19 @@ public class GameManager : MonoBehaviour
 
     private void InitManagers()
     {
-        // 자동화 코드 만들어두면 편할듯
-        GameObject resourceObj = new GameObject("ResourceManager");
-        resourceObj.transform.SetParent(transform, false);
-        resourceManager = resourceObj.AddComponent<ResourceManager>();
-
-        GameObject poolObj = new GameObject("PoolManager");
-        poolObj.transform.SetParent(transform, false);
-        poolManager = poolObj.AddComponent<PoolManager>();
-
-        GameObject sceneObj = new GameObject("SceneManager");
-        sceneObj.transform.SetParent(transform, false);
-        sceneManager = sceneObj.AddComponent<SceneManager>();
-
-        GameObject uiObj = new GameObject("UIManager");
-        uiObj.transform.SetParent(transform, false);
-        uiManager = uiObj.AddComponent<UIManager>();
-
-        GameObject eventObj = new GameObject("EventManager");
-        eventObj.transform.SetParent(transform, false);
-        eventManager = eventObj.AddComponent<EventManager>();
-
-        GameObject scoreObj = new GameObject("ScoreManager");
-        scoreObj.transform.SetParent(transform, false);
-        scoreManager = scoreObj.AddComponent<ScoreManager>();
-
-        GameObject soundObj = new GameObject("SoundManager");
-        soundObj.transform.SetParent(transform, false);
-        soundManager = soundObj.AddComponent<SoundManager>();
+        resourceManager = CreateChildManager<ResourceManager>("ResourceManager");
+        poolManager = CreateChildManager<PoolManager>("PoolManager");
+        sceneManager = CreateChildManager<SceneManager>("SceneManager");
+        uiManager = CreateChildManager<UIManager>("UIManager");
+        eventManager = CreateChildManager<EventManager>("EventManager");
+        soundManager = CreateChildManager<SoundManager>("SoundManager");
+        characterManager = CreateChildManager<CharacterManager>("CharacterManager");
     }
+    private T CreateChildManager<T>(string goName) where T : Component
+    {
+        var go = new GameObject(goName);
+        go.transform.SetParent(transform, false);
+        return go.AddComponent<T>();
+    }
+
 }

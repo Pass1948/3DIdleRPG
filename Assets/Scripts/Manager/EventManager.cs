@@ -20,6 +20,7 @@ public class EventManager : MonoBehaviour
     private void OnEnable()
     {
         UnityEngine.SceneManagement.SceneManager.sceneLoaded += SceneManagerSceneLoaded;
+
     }
     private void OnDisable()
     {
