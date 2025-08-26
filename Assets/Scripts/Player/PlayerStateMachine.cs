@@ -15,8 +15,6 @@ public class PlayerStateMachine : MonoBehaviour
         fsm.ChangeState(idle);
     }
 
-
-
     // ====== ╩Себ╣И ======
     class Idle : IState
     {

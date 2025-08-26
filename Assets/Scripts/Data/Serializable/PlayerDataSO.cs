@@ -11,6 +11,7 @@ public enum StatType
     ATK,
     DEF,
     DEX,
+    Count,// 갯수 확인용 항상 마지막에 위치
 }
 
 [System.Serializable]

@@ -5,76 +5,43 @@ using UnityEngine;
 public class PlayerStat : MonoBehaviour
 {
     [SerializeField] private PlayerData data;
-
-    public float hp { get; private set; }
-    public float mp { get; private set; }
-    public float exp { get; private set; }
-    public float speed { get; private set; }
-    public float attack { get; private set; }
-    public float defense { get; private set; }
-    public float dex { get; private set; }
-
+    private float[] cur = new float[(int)StatType.Count];
     private void Awake()
     {
-        data = GameManager.Resource.Load<PlayerData>("Data/PlayerData");
-        Init();
+        if (!data)
+            data = GameManager.Resource.Load<PlayerData>("Data/PlayerData");
+        ResetAllFromSO();
+    }
+    public void ZeroAll()
+    {
+        System.Array.Clear(cur, 0, cur.Length); // 전부 0으로
     }
 
-    void Init()
+    public void ResetAllFromSO()
     {
-        // 기본 0으로 초기화
-        hp =  mp = exp = speed =  attack = defense = dex = 0f;
-        for (int i = 0; i < data.stats.Count; i++)
-        {
-            var e = data.stats[i];
-            if (e == null) continue;
+        ZeroAll();
 
-            switch (e.statType)
-            {
-                case StatType.HP: hp = e.value; break;
-                case StatType.MP: mp = e.value; break;
-                case StatType.EXP: exp = e.value; break;
-                case StatType.Speed: speed = e.value; break;
-                case StatType.ATK: attack = e.value; break;
-                case StatType.DEF: defense = e.value; break;
-                case StatType.DEX: dex = e.value; break;
-                case StatType.None: break;
-            }
+        if (!data) // 데이터가 없으면 0으로 유지
+        {
+            Debug.LogWarning("[PlayerStat] PlayerData가 없습니다. 기본값(0) 유지", this);
+            return;
         }
-    }
-    public float Get(StatType type)
-    {
-        return type switch
+        for (int i = 1; i < (int)StatType.Count; i++)
         {
-            StatType.HP => hp,
-            StatType.MP => mp,
-            StatType.EXP => exp,
-            StatType.Speed => speed,
-            StatType.ATK => attack,
-            StatType.DEF => defense,
-            StatType.DEX => dex,
-        };
-    }
-    public void Set(StatType type, float value)
-    {
-        value = Mathf.Max(0f, value);
-        switch (type)
-        {
-            case StatType.HP: hp = value; break;
-            case StatType.MP: mp = value; break;
-            case StatType.EXP: exp = value; break;
-            case StatType.Speed: speed = value; break;
-            case StatType.ATK: attack = value; break;
-            case StatType.DEF: defense = value; break;
-            case StatType.DEX: dex = value; break;
+            var type = (StatType)i;
+            if (data.TryGet(type, out var value))
+                cur[i] = Mathf.Max(0f, value);  // 음수 방지
         }
     }
 
-    // 스텟 상호작용 메서드들
-    public void ApplyDamage(float damage)
+    public float Get(StatType type) => cur[(int)type];
+    public void Set(StatType type, float value) => cur[(int)type] = Mathf.Max(0f, value);
+    public void Add(StatType type, float value) => Set(type, Get(type) + value);
+
+    public void ApplyDamage(float value)
     {
-        float final = Mathf.Max(1f, damage - dex);
-        Set(StatType.HP, hp - final);
+        float final = Mathf.Max(1f, value - Get(StatType.DEF));
+        Set(StatType.HP, Get(StatType.HP) - final);
     }
 }
 
