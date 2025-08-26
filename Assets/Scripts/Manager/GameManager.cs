@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     private static CharacterManager characterManager;
     public static CharacterManager Character => characterManager;
 
+    private static StateMachineManager stateMachineManager;
+    public static StateMachineManager StateMachine=> stateMachineManager;
     private void Awake()
     {
         if (instance != null) { Destroy(this); return; }
@@ -54,6 +56,7 @@ public class GameManager : MonoBehaviour
         eventManager = CreateChildManager<EventManager>("EventManager");
         soundManager = CreateChildManager<SoundManager>("SoundManager");
         characterManager = CreateChildManager<CharacterManager>("CharacterManager");
+        stateMachineManager = CreateChildManager<StateMachineManager>("StateMachineManager");
     }
     private T CreateChildManager<T>(string goName) where T : Component
     {
