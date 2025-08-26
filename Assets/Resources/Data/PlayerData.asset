@@ -14,27 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats:
   - key: HP
-    intValue: 0
-    floatValue: 100
-    stringValue: 
-    boolValue: 0
+    statType: 1
+    value: 0
   - key: MP
-    intValue: 0
-    floatValue: 50
-    stringValue: 
-    boolValue: 0
+    statType: 2
+    value: 0
   - key: EXP
-    intValue: 0
-    floatValue: 0
-    stringValue: 
-    boolValue: 0
-  - key: EXP
-    intValue: 0
-    floatValue: 0
-    stringValue: 
-    boolValue: 0
-  - key: 
-    intValue: 0
-    floatValue: 0
-    stringValue: 
-    boolValue: 0
+    statType: 3
+    value: 0
+  - key: Speed
+    statType: 4
+    value: 0
+  - key: ATK
+    statType: 5
+    value: 0
+  - key: DFS
+    statType: 6
+    value: 0
+  - key: DEX
+    statType: 7
+    value: 0
