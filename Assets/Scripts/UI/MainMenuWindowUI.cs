@@ -16,15 +16,12 @@ public class MainMenuWindowUI : WindowUI
         buttons[inventoryButton].onClick.AddListener(OnInventoryButton);
     }
 
-    void OnStatusButton()
+   public void OnStatusButton()
     {
         GameManager.UI.ShowPopUpUI<StatusPopUpUI>(path1);
     }
-    void OnInventoryButton()
+    public void OnInventoryButton()
     {
         GameManager.UI.ShowPopUpUI<InventoryPopUpUI>(path2);
     }
-
-
-
 }
