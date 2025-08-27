@@ -15,22 +15,22 @@ MonoBehaviour:
   stats:
   - key: HP
     statType: 1
-    value: 0
+    value: 100
   - key: MP
     statType: 2
-    value: 0
+    value: 50
   - key: EXP
     statType: 3
     value: 0
   - key: Speed
     statType: 4
-    value: 0
+    value: 5
   - key: ATK
     statType: 5
-    value: 0
+    value: 10
   - key: DFS
     statType: 6
-    value: 0
+    value: 5
   - key: DEX
     statType: 7
-    value: 0
+    value: 5

@@ -690,7 +690,7 @@ GameObject:
   - component: {fileID: 577212998}
   - component: {fileID: 577212997}
   - component: {fileID: 577212996}
-  - component: {fileID: 577212995}
+  - component: {fileID: 577212999}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -698,28 +698,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &577212995
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 577212994}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &577212996
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -785,6 +763,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &577212999
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577212994}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 2.220446e-16, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &596788891
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,12 +1037,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 830953826}
-  - component: {fileID: 830953829}
   - component: {fileID: 830953825}
   - component: {fileID: 830953824}
   - component: {fileID: 830953823}
-  - component: {fileID: 830953828}
+  - component: {fileID: 830953829}
   - component: {fileID: 830953827}
+  - component: {fileID: 830953828}
+  - component: {fileID: 830953830}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1162,6 +1162,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2cad170f729c0c4294ce33dd8d869e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyTag: Enemy
+  sightRadius: 100
+  attackRange: 1
+  attackCooldown: 0.5
+  rotateSpeed: 10
 --- !u!114 &830953829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1174,6 +1179,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5609afff306372f43986e17bee915bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &830953830
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830953822}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2069,7 +2101,7 @@ GameObject:
   - component: {fileID: 1954998649}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
