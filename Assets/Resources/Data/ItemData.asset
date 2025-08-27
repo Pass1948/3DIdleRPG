@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item:
   - itemName: "\uAC11\uC637"
-    IconPath: 
+    IconPath: Item/Sprite/BodyArmor_1
     count: 1
-  - itemName: 
-    IconPath: 
+  - itemName: "\uD22C\uAD6C"
+    IconPath: Item/Sprite/Helmet_10
     count: 1
-  - itemName: 
-    IconPath: 
+  - itemName: "\uBC14\uC9C0"
+    IconPath: Item/Sprite/Pants_1
     count: 1
-  - itemName: 
-    IconPath: 
+  - itemName: "\uBD80\uCE20"
+    IconPath: Item/Sprite/Boots_2
     count: 1
-  - itemName: 
-    IconPath: 
+  - itemName: "\uC7A5\uAC11"
+    IconPath: Item/Sprite/Gloves_10
     count: 1
