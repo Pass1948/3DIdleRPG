@@ -28,6 +28,7 @@ public class SlotUI : MonoBehaviour
 
       icon.sprite = sprite;
       countText.text = Item.count.ToString();
+        RefreshEquipMark();
     }
 
     public void Clear()

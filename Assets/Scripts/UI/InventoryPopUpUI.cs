@@ -21,6 +21,7 @@ public class InventoryPopUpUI : PopUpUI
         itemDB = GameManager.Resource.Load<ItemData>("Data/ItemData");
         buttons[closeButton].onClick.AddListener(OnClosePopUpUI);
         buttons[addItemButton].onClick.AddListener(OnAddItemRandomFromDB);
+        SetEquipButtonsActive(false);
         CacheChildrenSlotsAndBind();
     }
 
@@ -99,10 +100,13 @@ public class InventoryPopUpUI : PopUpUI
             equipBtn.onClick.RemoveAllListeners();
             equipBtn.gameObject.SetActive(ok && !slot.IsEquipped);
             if (ok && !slot.IsEquipped)
+            {
                 equipBtn.onClick.AddListener(() =>
                 {
                     slot.OnEquip();
+                    SetEquipButtonsActive(slot); // ★ 장착 후 즉시 토글 갱신
                 });
+            }
         }
 
         // UnEquip
@@ -111,10 +115,13 @@ public class InventoryPopUpUI : PopUpUI
             unEquipBtn.onClick.RemoveAllListeners();
             unEquipBtn.gameObject.SetActive(ok && slot.IsEquipped);
             if (ok && slot.IsEquipped)
+            {
                 unEquipBtn.onClick.AddListener(() =>
                 {
                     slot.OnUnEquip();
+                    SetEquipButtonsActive(slot); // ★ 해제 후 즉시 토글 갱신
                 });
+            }
         }
     }
     void SetEquipButtonsActive(bool active)
