@@ -34,3 +34,6 @@ MonoBehaviour:
   - key: DEX
     statType: 7
     value: 5
+  - key: Level
+    statType: 8
+    value: 1
