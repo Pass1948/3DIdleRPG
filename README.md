@@ -33,9 +33,9 @@
 - 아래 Add Item Button이라는 버튼을 누르게 되면 아이템이 추가됨
 - 아이템을 누르면 Equip버튼이 나타나고 누르면 아이템을 장착하게됨
 - 그리고 장착된 아이템을 다시 누르면 해제하기 버튼이 활성화 되고 누르면 아이템을 해제하게됨
-- <img width="300" height="250" alt="image" src="https://github.com/user-attachments/assets/bed6a5fb-5e87-4e5b-899a-31a88e2c8dca" />
-- <img width="300" height="250" alt="image" src="https://github.com/user-attachments/assets/1880d19f-a91d-4cd7-be51-65555a6bac16" />
+- <img width="300" height="350" alt="image" src="https://github.com/user-attachments/assets/bed6a5fb-5e87-4e5b-899a-31a88e2c8dca" />
+- <img width="300" height="350" alt="image" src="https://github.com/user-attachments/assets/1880d19f-a91d-4cd7-be51-65555a6bac16" />
 
 ### 6) 캐릭터와 아이템 데이터 관리
 - ScriptableObject로 관리하여 클래스에 바인딩하여 사용
-- <img width="300" height="250" alt="image" src="https://github.com/user-attachments/assets/9aeee00b-34f5-40c3-bd97-592081fa24de" />
+- <img width="600" height="650" alt="image" src="https://github.com/user-attachments/assets/9aeee00b-34f5-40c3-bd97-592081fa24de" />
