@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    PlayerStat playerStat;
-    PlayerStateMachine state;
+   public PlayerStat playerStat;
+    public PlayerStateMachine state;
     private void Awake()
     {
         GameManager.Character.Player = this;
